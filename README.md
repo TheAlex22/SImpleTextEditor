@@ -1,1 +1,1 @@
-A simple modular Text Editor made in python
+### A simple modular Text Editor made in python
