@@ -52,6 +52,7 @@ class BasicUI(UInterface):
 
   def pasteFileToField(self, fileFunctions):
     newText = fileFunctions.openFile()
+    self.textField.delete(0.0 , tk.END)
     self.textField.insert(1.0, newText)
     self.printLineCount()
 

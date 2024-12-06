@@ -1,4 +1,4 @@
-#Ignores cached files
+# Ignores cached files
 
-_pycache_/
-OldCode.py
+/_pycache_
+/OldCode.py
