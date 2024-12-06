@@ -16,13 +16,14 @@ class BasicUI(UInterface):
     self.window = tk.Tk()
     self.window.title("Text Editor")
     self.window.geometry(windowSize)
-  
-  def setTextField(self, fileFunctions):
+
+
+  def setTextField(self, fileFunctions, backgroundColor):
     self.mainFrame = ttk.Frame(master = self.window)
     self.mainFrame.columnconfigure(0, weight = 1)
     self.mainFrame.columnconfigure(1, weight = 1)
     self.mainFrame.rowconfigure(0, weight = 1)
-    self.textField = tk.Text(master = self.mainFrame, background = "gray", font=("Arial", 8)) #width = width,height= height
+    self.textField = tk.Text(master = self.mainFrame, font=("Arial", 8), bg= backgroundColor) #width = width,height= height
     self.textField.config(spacing1=1.5)
     self.textField.config(spacing3=1.5)
     self.textField.grid(row=0, column=1,sticky="nswe")
@@ -32,12 +33,12 @@ class BasicUI(UInterface):
     self.textField.bind("<KeyRelease-BackSpace>", lambda event: self.released_back())
     self.textField.bind("<Control-KeyPress-z>", lambda event : self.DebugLineCounter())
 
-  def setLineCounter(self):
+  def setLineCounter(self, color):
     lineFrame = ttk.Frame(master = self.mainFrame)
     lineFrame.grid(row = 0, column = 0, sticky="nswe")
     lineFrame.columnconfigure(0, weight = 1)
     self.lineCounter = tk.IntVar(value = 1)
-    lineNumbers = ttk.Label(master = lineFrame, background= "green", text = "1", font=("Arial", 8))
+    lineNumbers = ttk.Label(master = lineFrame, background= color, text = "1", font=("Arial", 8))
     lineNumbers.grid(row=0,column=0, sticky="nswe")
 
   def setMenu(self, fileFunctions):
@@ -60,7 +61,7 @@ class BasicUI(UInterface):
     count = int(self.textField.index("end-1c").split(".")[0])
     # print("Line count : " + str(count))
     self.lineCounter.set(count+1)
-    line = ttk.Label(self.mainFrame.winfo_children()[1], background= "green", text = str(count+1), font=("Arial", 8))
+    line = ttk.Label(self.mainFrame.winfo_children()[1], background= "yellow", text = str(count+1), font=("Arial", 8))
     line.grid(row = count, column = 0, sticky="nswe")
 
   def released_back(self):
@@ -77,7 +78,7 @@ class BasicUI(UInterface):
       if(count > currentLineCount):
         self.DebugLineCounter()
         for i in range(currentLineCount, count):
-          line = ttk.Label(self.mainFrame.winfo_children()[1], background= "green", text = str(i+1), font=("Arial", 8))
+          line = ttk.Label(self.mainFrame.winfo_children()[1], background= "yellow", text = str(i+1), font=("Arial", 8))
           line.grid(row = i, column = 0, sticky="nswe")
         self.lineCounter.set(count)
         self.DebugLineCounter()

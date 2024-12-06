@@ -6,8 +6,8 @@ class Main():
   functions = FileOptions()
   currentUI = BasicUI()
   currentUI.setWindowSize(800, 600)
-  currentUI.setTextField(functions)
-  currentUI.setLineCounter()
+  currentUI.setTextField(functions, "light cyan")
+  currentUI.setLineCounter("yellow")
   currentUI.setMenu(functions)
   currentUI.start()
   

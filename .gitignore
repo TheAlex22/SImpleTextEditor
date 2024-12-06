@@ -1,0 +1,4 @@
+#Ignores cached files
+
+_pycache_/
+OldCode.py
